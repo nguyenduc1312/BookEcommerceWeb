@@ -48,7 +48,7 @@ namespace BookEcommerceWeb.DataAccess.Repositories
 
         public async Task<bool> IsExists(int id)
         {
-            var entity = await _dbSet.FindAsync(id);
+            var entity = await _dbSet.AsNoTracking().FirstOrDefaultAsync(item => item.Id == id);
             return entity != null;
         }
 

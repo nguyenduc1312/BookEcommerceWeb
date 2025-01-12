@@ -4,6 +4,8 @@ using BookEcommerceWeb.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using BookEcommerceWeb.Services.Interfaces;
 using BookEcommerceWeb.Services.Services;
+using AutoMapper;
+using BookEcommerceWeb.Services.MappingProfiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 //Dependency Injection
 builder.Services.AddScoped<IUnitofWork, UnitOfWork>();

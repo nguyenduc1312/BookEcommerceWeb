@@ -2,6 +2,8 @@ using BookEcommerceWeb.DataAccess.Data;
 using BookEcommerceWeb.DataAccess.Repositories.Interfaces;
 using BookEcommerceWeb.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
+using BookEcommerceWeb.Services.Interfaces;
+using BookEcommerceWeb.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,7 @@ builder.Services.AddSwaggerGen();
 
 //Dependency Injection
 builder.Services.AddScoped<IUnitofWork, UnitOfWork>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 

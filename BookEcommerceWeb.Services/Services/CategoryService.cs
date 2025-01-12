@@ -24,6 +24,7 @@ namespace BookEcommerceWeb.Services.Services
                 throw new Exception("Không thể thêm mới do danh mục hàng hóa đã tồn tại");
             
             await _unitofWork.CategoryRepository.AddAsync(category);
+            await _unitofWork.SaveChangeAsync();
         }
 
         public async Task DelteCategory(int id)
@@ -33,6 +34,7 @@ namespace BookEcommerceWeb.Services.Services
                 throw new Exception("Không thể xóa do danh mục hàng hóa không tồn tại");
 
             _unitofWork.CategoryRepository.Remove(category);
+            await _unitofWork.SaveChangeAsync();
         }
 
         public async Task<IEnumerable<Category>> GetAllCategories()
@@ -54,7 +56,9 @@ namespace BookEcommerceWeb.Services.Services
             if (!isExists)
                 throw new Exception("Không thể cập nhật do danh mục hàng hóa không tồn tại");
 
+            category.UpdatedDate = DateTime.UtcNow;
             _unitofWork.CategoryRepository.Update(category);
+            await _unitofWork.SaveChangeAsync();
         }
     }
 }

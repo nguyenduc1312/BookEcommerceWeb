@@ -46,7 +46,7 @@ namespace BookEcommerceWeb.Controllers
         [HttpDelete("delete")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _categoryService.DelteCategory(id);
+            await _categoryService.DeleteCategory(id);
             return Ok();
         }
     }

@@ -32,7 +32,7 @@ namespace BookEcommerceWeb.Services.Services
             await _unitofWork.SaveChangeAsync();
         }
 
-        public async Task DelteCategory(int id)
+        public async Task DeleteCategory(int id)
         {
             var category = await _unitofWork.CategoryRepository.GetById(id);
             if (category == null)

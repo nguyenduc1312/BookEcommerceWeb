@@ -14,6 +14,6 @@ namespace BookEcommerceWeb.Services.Interfaces
         Task<CategoryDto> GetCategoryDetail(int id);
         Task CreateCategory(CategoryDto category);
         Task UpdateCategory(CategoryDto category);
-        Task DelteCategory(int id);
+        Task DeleteCategory(int id);
     }
 }

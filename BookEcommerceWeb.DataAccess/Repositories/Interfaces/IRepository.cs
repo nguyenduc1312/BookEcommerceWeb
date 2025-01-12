@@ -12,7 +12,7 @@ namespace BookEcommerceWeb.DataAccess.Repositories.Interfaces
     {
         IEnumerable<T> GetAll(string? includeProperty = null);
         IEnumerable<T> Get(Expression<Func<T, bool>> filter, string? includeProperty = null);
-        Task<T?> GetById(int? id);
+        Task<T?> GetById(int id);
         Task AddAsync(T entity);
         void Update(T entity);
         void Remove(T entity);

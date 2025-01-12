@@ -41,9 +41,9 @@ namespace BookEcommerceWeb.DataAccess.Repositories
             return GetIncludeProperty(includeProperty, query).ToList();
         }
 
-        public async Task<T?> GetById(int? id)
+        public async Task<T?> GetById(int id)
         {
-            return await _dbSet.FindAsync(id);
+            return await _dbSet.AsNoTracking().FirstOrDefaultAsync(item => item.Id == id);
         }
 
         public async Task<bool> IsExists(int id)

@@ -1,4 +1,5 @@
-﻿using BookEcommerceWeb.Models.Models;
+﻿using BookEcommerceWeb.Models.DTOs;
+using BookEcommerceWeb.Models.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace BookEcommerceWeb.Services.Interfaces
 {
     public interface ICategoryService
     {
-        Task<IEnumerable<Category>> GetAllCategories();
-        Task<Category> GetCategoryDetail(int id);
-        Task CreateCategory(Category category);
-        Task UpdateCategory(Category category);
+        Task<IEnumerable<CategoryDto>> GetAllCategories();
+        Task<CategoryDto> GetCategoryDetail(int id);
+        Task CreateCategory(CategoryDto category);
+        Task UpdateCategory(CategoryDto category);
         Task DelteCategory(int id);
     }
 }

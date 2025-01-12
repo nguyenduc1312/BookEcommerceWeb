@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookEcommerceWeb", "BookEcommerceWeb\BookEcommerceWeb.csproj", "{1DD19C16-AB52-400F-8A1E-27663DFCD0BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookEcommerceWeb", "BookEcommerceWeb\BookEcommerceWeb.csproj", "{1DD19C16-AB52-400F-8A1E-27663DFCD0BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookEcommerceWeb.DataAccess", "BookEcommerceWeb.DataAccess\BookEcommerceWeb.DataAccess.csproj", "{AD21CD9B-C7FB-406D-B770-9E16055CE6D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookEcommerceWeb.DataAccess", "BookEcommerceWeb.DataAccess\BookEcommerceWeb.DataAccess.csproj", "{AD21CD9B-C7FB-406D-B770-9E16055CE6D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookEcommerceWeb.Models", "BookEcommerceWeb.Models\BookEcommerceWeb.Models.csproj", "{869C3E07-25C9-4213-91EC-04B69FDCC7A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookEcommerceWeb.Models", "BookEcommerceWeb.Models\BookEcommerceWeb.Models.csproj", "{869C3E07-25C9-4213-91EC-04B69FDCC7A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookEcommerceWeb.Utility", "BookEcommerceWeb.Utility\BookEcommerceWeb.Utility.csproj", "{8ED6AB05-4543-400C-ABE7-02DFDA634072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookEcommerceWeb.Utility", "BookEcommerceWeb.Utility\BookEcommerceWeb.Utility.csproj", "{8ED6AB05-4543-400C-ABE7-02DFDA634072}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookEcommerceWeb.Services", "BookEcommerceWeb.Services\BookEcommerceWeb.Services.csproj", "{5483223D-0B20-4559-8728-83BBFB4F6F0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8ED6AB05-4543-400C-ABE7-02DFDA634072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED6AB05-4543-400C-ABE7-02DFDA634072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ED6AB05-4543-400C-ABE7-02DFDA634072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5483223D-0B20-4559-8728-83BBFB4F6F0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5483223D-0B20-4559-8728-83BBFB4F6F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5483223D-0B20-4559-8728-83BBFB4F6F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5483223D-0B20-4559-8728-83BBFB4F6F0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

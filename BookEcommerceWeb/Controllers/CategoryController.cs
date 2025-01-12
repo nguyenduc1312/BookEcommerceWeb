@@ -1,4 +1,5 @@
 ﻿using BookEcommerceWeb.DataAccess.Repositories.Interfaces;
+using BookEcommerceWeb.Models.DTOs;
 using BookEcommerceWeb.Models.Models;
 using BookEcommerceWeb.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -29,14 +30,14 @@ namespace BookEcommerceWeb.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> Add(Category category)
+        public async Task<IActionResult> Add(CategoryDto category)
         {
             await _categoryService.CreateCategory(category);
             return Ok(category);
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> Update(Category category)
+        public async Task<IActionResult> Update(CategoryDto category)
         {
             await _categoryService.UpdateCategory(category);
             return Ok(category);

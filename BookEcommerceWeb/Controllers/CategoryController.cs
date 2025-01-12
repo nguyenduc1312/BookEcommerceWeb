@@ -1,12 +1,52 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookEcommerceWeb.DataAccess.Repositories.Interfaces;
+using BookEcommerceWeb.Models.Models;
+using BookEcommerceWeb.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookEcommerceWeb.Controllers
 {
     public class CategoryController : Controller
     {
-        public IActionResult Index()
+        private readonly ICategoryService _categoryService;
+
+        public CategoryController(ICategoryService categoryService)
         {
-            return View();
+            _categoryService = categoryService;
+        }
+
+        [HttpGet("get-all")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _categoryService.GetAllCategories();
+            return Json(new { data = result });
+        }
+
+        [HttpGet("detail")]
+        public async Task<IActionResult> GetDetail(int id)
+        {
+            var result = await _categoryService.GetCategoryDetail(id);
+            return Json(new { data = result });
+        }
+
+        [HttpPost("add")]
+        public async Task<IActionResult> Add(Category category)
+        {
+            await _categoryService.CreateCategory(category);
+            return Ok(category);
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> Update(Category category)
+        {
+            await _categoryService.UpdateCategory(category);
+            return Ok(category);
+        }
+
+        [HttpDelete("delete")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _categoryService.DelteCategory(id);
+            return Ok();
         }
     }
 }

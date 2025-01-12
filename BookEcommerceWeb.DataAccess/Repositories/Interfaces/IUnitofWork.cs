@@ -9,6 +9,7 @@ namespace BookEcommerceWeb.DataAccess.Repositories.Interfaces
     public interface IUnitofWork
     {
         public ICategoryRepository CategoryRepository { get; }
+        public IProductRepository ProductRepository { get; }
 
         Task SaveChangeAsync();
         void Save();

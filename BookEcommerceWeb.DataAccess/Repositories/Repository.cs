@@ -25,11 +25,11 @@ namespace BookEcommerceWeb.DataAccess.Repositories
         {
             await _dbSet.AddAsync(entity);
         }
-        public void UpdateAsync(T entity)
+        public void Update(T entity)
         {
             _dbSet.Update(entity);
         }
-        public IEnumerable<T> GetAsync(Expression<Func<T, bool>> filter, string? includeProperty = null)
+        public IEnumerable<T> Get(Expression<Func<T, bool>> filter, string? includeProperty = null)
         {
             var query = _dbSet.Where(filter);
             return GetIncludeProperty(includeProperty, query).ToList();

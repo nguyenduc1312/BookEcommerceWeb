@@ -13,6 +13,7 @@ namespace BookEcommerceWeb.Services.Interfaces
         Task<ProductDto> GetProductDetail(int id);
         Task CreateProduct(ProductDto productDto);
         Task UpdateProduct(ProductDto productDto);
-        Task DelteProduct(int id);
+        Task DeleteProduct(int id);
+        Task<IEnumerable<ProductDto>> GetProductsByCateId(int id);
     }
 }

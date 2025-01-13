@@ -64,6 +64,17 @@ namespace BookEcommerceWeb.Services.Services
             return productDto;
         }
 
+        public async Task<IEnumerable<ProductDto>> GetProductsByCateId(int cateId)
+        {
+            var category = await _unitofWork.CategoryRepository.GetById(cateId);
+            if (category == null)
+                throw new Exception("Không thể tìm thấy do danh mục hàng hóa không tồn tại");
+
+            var products = _unitofWork.ProductRepository.Get(item => item.CategoryId == cateId,"Category");
+            var result = _mapper.Map<List<ProductDto>>(products);
+            return result;
+        }
+
         public async Task UpdateProduct(ProductDto productDto)
         {
             var existsProduct = await _unitofWork.ProductRepository.GetById(productDto.Id);

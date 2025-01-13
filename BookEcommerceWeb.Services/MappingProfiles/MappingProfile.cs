@@ -29,7 +29,18 @@ namespace BookEcommerceWeb.Services.MappingProfiles
             .ForMember(dest => dest.Price100, opt => opt.MapFrom(src => src.Price100))      
             .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId))  
             .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.ImageUrl))
-            .ReverseMap(); ;     
+            .ReverseMap();
+
+            CreateMap<Company, CompanyDto>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.Province, opt => opt.MapFrom(src => src.Province))
+            .ForMember(dest => dest.District, opt => opt.MapFrom(src => src.District))
+            .ForMember(dest => dest.Commune, opt => opt.MapFrom(src => src.Commune))
+            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
+            .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber))
+            .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+            .ReverseMap();
         }
     }
 }

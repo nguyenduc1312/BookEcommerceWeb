@@ -10,6 +10,7 @@ namespace BookEcommerceWeb.DataAccess.Repositories.Interfaces
     {
         public ICategoryRepository CategoryRepository { get; }
         public IProductRepository ProductRepository { get; }
+        public ICompanyRepository CompanyRepository { get; }
 
         Task SaveChangeAsync();
         void Save();

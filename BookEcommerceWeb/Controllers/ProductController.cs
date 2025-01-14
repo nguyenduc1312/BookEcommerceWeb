@@ -1,6 +1,10 @@
 ﻿using BookEcommerceWeb.Models.DTOs;
+using BookEcommerceWeb.Models.Models;
 using BookEcommerceWeb.Services.Interfaces;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace BookEcommerceWeb.Controllers
 {
@@ -8,10 +12,11 @@ namespace BookEcommerceWeb.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
-
-        public ProductController(IProductService productService)
+        private IValidator<ProductDto> _validator;
+        public ProductController(IProductService productService, IValidator<ProductDto> validator)
         {
             _productService = productService;
+            _validator = validator;
         }
 
         [HttpGet("get-all")]
@@ -31,6 +36,14 @@ namespace BookEcommerceWeb.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> Add(ProductDto productDto)
         {
+            ValidationResult result = await _validator.ValidateAsync(productDto);
+
+            if (!result.IsValid)
+            {
+                var errors = result.Errors.Select(e => e.ErrorMessage).ToList();
+                return BadRequest(errors);
+            }
+
             await _productService.CreateProduct(productDto);
             return Ok(productDto);
         }
@@ -38,6 +51,14 @@ namespace BookEcommerceWeb.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> Update(ProductDto productDto)
         {
+            ValidationResult result = await _validator.ValidateAsync(productDto);
+
+            if (!result.IsValid)
+            {
+                var errors = result.Errors.Select(e => e.ErrorMessage).ToList();
+                return BadRequest(errors);
+            }
+
             await _productService.UpdateProduct(productDto);
             return Ok(productDto);
         }

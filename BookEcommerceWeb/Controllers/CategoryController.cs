@@ -1,7 +1,10 @@
-﻿using BookEcommerceWeb.DataAccess.Repositories.Interfaces;
+﻿using System;
+using BookEcommerceWeb.DataAccess.Repositories.Interfaces;
 using BookEcommerceWeb.Models.DTOs;
 using BookEcommerceWeb.Models.Models;
 using BookEcommerceWeb.Services.Interfaces;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookEcommerceWeb.Controllers
@@ -10,10 +13,12 @@ namespace BookEcommerceWeb.Controllers
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
+        private IValidator<CategoryDto> _validator;
 
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService, IValidator<CategoryDto> validator)
         {
             _categoryService = categoryService;
+            _validator = validator;
         }
 
         [HttpGet("get-all")]
@@ -33,6 +38,14 @@ namespace BookEcommerceWeb.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> Add(CategoryDto category)
         {
+            ValidationResult result = await _validator.ValidateAsync(category);
+
+            if (!result.IsValid)
+            {
+                var errors = result.Errors.Select(e => e.ErrorMessage).ToList();
+                return BadRequest(errors);
+            }
+
             await _categoryService.CreateCategory(category);
             return Ok(category);
         }
@@ -40,6 +53,13 @@ namespace BookEcommerceWeb.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> Update(CategoryDto category)
         {
+            ValidationResult result = await _validator.ValidateAsync(category);
+
+            if (!result.IsValid)
+            {
+                var errors = result.Errors.Select(e => e.ErrorMessage).ToList();
+                return BadRequest(errors);
+            }
             await _categoryService.UpdateCategory(category);
             return Ok(category);
         }

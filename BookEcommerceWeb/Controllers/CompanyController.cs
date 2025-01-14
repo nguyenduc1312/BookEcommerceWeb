@@ -2,6 +2,8 @@
 using BookEcommerceWeb.Models.DTOs;
 using BookEcommerceWeb.Models.Models;
 using BookEcommerceWeb.Services.Interfaces;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookEcommerceWeb.Controllers
@@ -10,10 +12,11 @@ namespace BookEcommerceWeb.Controllers
     public class CompanyController : Controller
     {
         private readonly ICompanyService _companyService;
-
-        public CompanyController(ICompanyService companyService)
+        private IValidator<CompanyDto> _validator;
+        public CompanyController(ICompanyService companyService, IValidator<CompanyDto> validator)
         {
             _companyService = companyService;
+            _validator = validator;
         }
 
         [HttpGet("get-all")]
@@ -33,6 +36,14 @@ namespace BookEcommerceWeb.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> Add(CompanyDto company)
         {
+            ValidationResult result = await _validator.ValidateAsync(company);
+
+            if (!result.IsValid)
+            {
+                var errors = result.Errors.Select(e => e.ErrorMessage).ToList();
+                return BadRequest(errors);
+            }
+
             await _companyService.CreateCompany(company);
             return Ok(company);
         }
@@ -40,6 +51,14 @@ namespace BookEcommerceWeb.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> Update(CompanyDto company)
         {
+            ValidationResult result = await _validator.ValidateAsync(company);
+
+            if (!result.IsValid)
+            {
+                var errors = result.Errors.Select(e => e.ErrorMessage).ToList();
+                return BadRequest(errors);
+            }
+
             await _companyService.UpdateCompany(company);
             return Ok(company);
         }

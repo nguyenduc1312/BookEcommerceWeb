@@ -18,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Add AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 //Dependency Injection

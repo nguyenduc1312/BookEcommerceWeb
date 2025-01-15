@@ -34,7 +34,7 @@ namespace BookEcommerceWeb.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> Add(CompanyDto company)
+        public async Task<IActionResult> Add([FromBody] CompanyDto company)
         {
             ValidationResult result = await _validator.ValidateAsync(company);
 
@@ -49,7 +49,7 @@ namespace BookEcommerceWeb.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> Update(CompanyDto company)
+        public async Task<IActionResult> Update([FromBody] CompanyDto company)
         {
             ValidationResult result = await _validator.ValidateAsync(company);
 

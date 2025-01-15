@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BookEcommerceWeb.Models.DTOs;
+﻿using BookEcommerceWeb.Models.DTOs;
 using FluentValidation;
 
 namespace BookEcommerceWeb.Models.Validation
